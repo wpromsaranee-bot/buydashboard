@@ -1,0 +1,1116 @@
+[
+  {
+    "date": "2026-02-12",
+    "set": 1441.530029296875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 36,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 57,
+        "trend": "→"
+      },
+      "KBANK": {
+        "price": 198.5,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 49.5,
+        "trend": "→"
+      },
+      "ADVANC": {
+        "price": 395,
+        "trend": "→"
+      }
+    },
+    "score": 0,
+    "signal": "SIDEWAY",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-13",
+    "set": 1430.4100341796875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35.75,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 57.5,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 195.5,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 49.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 389,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-16",
+    "set": 1438.0899658203125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35.75,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 56.25,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 199,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 49.5,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 390,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-17",
+    "set": 1459.6800537109375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35.75,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 56.25,
+        "trend": "→"
+      },
+      "KBANK": {
+        "price": 206,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 50.75,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 391,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-18",
+    "set": 1466.6700439453125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 36.25,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 56.75,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 207,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 52.25,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 389,
+        "trend": "↓"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-19",
+    "set": 1493.9100341796875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 37.5,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 56.25,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 205,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 54.5,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 390,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-20",
+    "set": 1479.7099609375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 37,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 56.5,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 205,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 52.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 386,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-23",
+    "set": 1480.239990234375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 36.5,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 53.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 201,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 51.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 388,
+        "trend": "↑"
+      }
+    },
+    "score": 0,
+    "signal": "SIDEWAY",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-24",
+    "set": 1490.4000244140625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 36.75,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 52.25,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 201,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 50.75,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 394,
+        "trend": "↑"
+      }
+    },
+    "score": 1,
+    "signal": "SIDEWAY",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-25",
+    "set": 1516.010009765625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 37.25,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 53.25,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 196.5,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 51.75,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 404,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-26",
+    "set": 1533.6400146484375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 37.25,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 54.5,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 198.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 53.75,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 404,
+        "trend": "→"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-02-27",
+    "set": 1528.260009765625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 37,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 54.5,
+        "trend": "→"
+      },
+      "KBANK": {
+        "price": 201,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 51.75,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 380,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-02",
+    "set": 1466.510009765625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 36.75,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 51.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 197,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 50,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 365,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-04",
+    "set": 1384.6099853515625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35.25,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 48.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 190,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 48.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 360,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-05",
+    "set": 1417.2900390625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 51,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 190,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 49,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 360,
+        "trend": "→"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-06",
+    "set": 1410.3699951171875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 50.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 188,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 48.5,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 361,
+        "trend": "↑"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-09",
+    "set": 1382.969970703125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.25,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 49.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 184.5,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 47.5,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 356,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-10",
+    "set": 1405.760009765625,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.5,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 49.75,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 188,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 47.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 365,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-11",
+    "set": 1407.3399658203125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.5,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 51,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 189.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 46.75,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 360,
+        "trend": "↓"
+      }
+    },
+    "score": 1,
+    "signal": "SIDEWAY",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-12",
+    "set": 1429.800048828125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 50.5,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 189,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 47.25,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 368,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-13",
+    "set": 1409.3499755859375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34.25,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 49,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 189,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 46.5,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 363,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-16",
+    "set": 1405.02001953125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.5,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 48.25,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 185,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 46,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 370,
+        "trend": "↑"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-17",
+    "set": 1433.8800048828125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 49.5,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 188.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 45.75,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 379,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-18",
+    "set": 1440.8499755859375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.5,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 49.5,
+        "trend": "→"
+      },
+      "KBANK": {
+        "price": 189.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 46,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 379,
+        "trend": "→"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-19",
+    "set": 1417.449951171875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34.25,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 48,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 187,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 44.25,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 376,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-20",
+    "set": 1432.989990234375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 48.75,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 189.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 380,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-23",
+    "set": 1397.3399658203125,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.5,
+        "trend": "↓"
+      },
+      "AOT": {
+        "price": 47.75,
+        "trend": "↓"
+      },
+      "KBANK": {
+        "price": 186.5,
+        "trend": "↓"
+      },
+      "CPALL": {
+        "price": 43.75,
+        "trend": "↓"
+      },
+      "ADVANC": {
+        "price": 366,
+        "trend": "↓"
+      }
+    },
+    "score": -2,
+    "signal": "BEAR",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-24",
+    "set": 1410.3900146484375,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 33.75,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 48.75,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 189,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 44.5,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 368,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-25",
+    "set": 1457.9100341796875,
+    "volume": 0,
+    "thb": 0,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34.25,
+        "trend": "↑"
+      },
+      "AOT": {
+        "price": 51,
+        "trend": "↑"
+      },
+      "KBANK": {
+        "price": 191.5,
+        "trend": "↑"
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "↑"
+      },
+      "ADVANC": {
+        "price": 371,
+        "trend": "↑"
+      }
+    },
+    "score": 2,
+    "signal": "BULL",
+    "entry": "BACKFILL"
+  },
+  {
+    "date": "2026-03-26",
+    "set": 1442.92,
+    "volume": 0,
+    "thb": 32.8,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34.5,
+        "trend": "→"
+      },
+      "AOT": {
+        "price": 50.75,
+        "trend": "→"
+      },
+      "KBANK": {
+        "price": 192,
+        "trend": "→"
+      },
+      "CPALL": {
+        "price": 44.25,
+        "trend": "→"
+      },
+      "ADVANC": {
+        "price": 368,
+        "trend": "→"
+      }
+    },
+    "score": 0,
+    "signal": "SIDEWAY",
+    "entry": "LIVE"
+  },
+  {
+    "date": "2026-03-27",
+    "set": 1451.79,
+    "volume": 48442863,
+    "thb": 32.81,
+    "foreign": -1000,
+    "bigcap": {
+      "PTT": {
+        "price": 35,
+        "trend": "→",
+        "volume": 23004338
+      },
+      "AOT": {
+        "price": 52,
+        "trend": "↑",
+        "volume": 14506955
+      },
+      "KBANK": {
+        "price": 192.5,
+        "trend": "→",
+        "volume": 1850243
+      },
+      "CPALL": {
+        "price": 44.75,
+        "trend": "↓",
+        "volume": 8388675
+      },
+      "ADVANC": {
+        "price": 368,
+        "trend": "→",
+        "volume": 692652
+      }
+    },
+    "score": -1,
+    "signal": "SIDEWAY",
+    "entry": "LIVE"
+  },
+  {
+    "date": "2026-03-31",
+    "set": 1451.48,
+    "volume": 156500758,
+    "thb": 32.86,
+    "foreign": 2000,
+    "bigcap": {
+      "PTT": {
+        "price": 35,
+        "trend": "→",
+        "volume": 85273557
+      },
+      "AOT": {
+        "price": 51.5,
+        "trend": "↑",
+        "volume": 26896338
+      },
+      "KBANK": {
+        "price": 191.5,
+        "trend": "↑",
+        "volume": 6164355
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "↑",
+        "volume": 32696463
+      },
+      "ADVANC": {
+        "price": 373,
+        "trend": "↑",
+        "volume": 5470045
+      }
+    },
+    "score": 4,
+    "signal": "BULL",
+    "entry": "LIVE",
+    "action": "BUY NOW",
+    "confidence": 100
+  },
+  {
+    "date": "2026-04-01",
+    "set": 1474.4,
+    "volume": 114946191,
+    "thb": 32.52,
+    "foreign": 2000,
+    "bigcap": {
+      "PTT": {
+        "price": 35.25,
+        "trend": "↑",
+        "volume": 46523588
+      },
+      "AOT": {
+        "price": 53.5,
+        "trend": "↓",
+        "volume": 26171612
+      },
+      "KBANK": {
+        "price": 192.5,
+        "trend": "→",
+        "volume": 6040345
+      },
+      "CPALL": {
+        "price": 46.25,
+        "trend": "→",
+        "volume": 30799146
+      },
+      "ADVANC": {
+        "price": 372,
+        "trend": "→",
+        "volume": 5411500
+      }
+    },
+    "score": 3,
+    "signal": "BULL",
+    "entry": "LIVE",
+    "action": "BUY NOW",
+    "confidence": 100
+  },
+  {
+    "date": "2026-04-02",
+    "set": 1465.72,
+    "volume": 156126808,
+    "thb": 32.59,
+    "foreign": -1000,
+    "bigcap": {
+      "PTT": {
+        "price": 35.5,
+        "trend": "→",
+        "volume": 87625476
+      },
+      "AOT": {
+        "price": 53.5,
+        "trend": "→",
+        "volume": 20494316
+      },
+      "KBANK": {
+        "price": 192,
+        "trend": "→",
+        "volume": 7761616
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "→",
+        "volume": 32253347
+      },
+      "ADVANC": {
+        "price": 364,
+        "trend": "→",
+        "volume": 7992053
+      }
+    },
+    "score": -1,
+    "signal": "SIDEWAY",
+    "entry": "LIVE",
+    "action": "WAIT",
+    "confidence": 20
+  }
+]
