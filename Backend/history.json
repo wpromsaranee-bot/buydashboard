@@ -1078,8 +1078,47 @@
     "date": "2026-04-02",
     "set": 1465.72,
     "volume": 156126808,
-    "thb": 32.59,
-    "foreign": -1000,
+    "thb": 32.57,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 35.5,
+        "trend": "↑",
+        "volume": 87625476
+      },
+      "AOT": {
+        "price": 53.5,
+        "trend": "→",
+        "volume": 20494316
+      },
+      "KBANK": {
+        "price": 192,
+        "trend": "↓",
+        "volume": 7761616
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "→",
+        "volume": 32253347
+      },
+      "ADVANC": {
+        "price": 364,
+        "trend": "→",
+        "volume": 7992053
+      }
+    },
+    "score": 0,
+    "signal": "SIDEWAY",
+    "entry": "LIVE",
+    "action": "WAIT",
+    "confidence": 20
+  },
+  {
+    "date": "2026-04-03",
+    "set": 1467.6,
+    "volume": 156126808,
+    "thb": 32.65,
+    "foreign": 0,
     "bigcap": {
       "PTT": {
         "price": 35.5,
@@ -1107,10 +1146,49 @@
         "volume": 7992053
       }
     },
-    "score": -1,
+    "score": 2,
     "signal": "SIDEWAY",
     "entry": "LIVE",
     "action": "WAIT",
-    "confidence": 20
+    "confidence": 0
+  },
+  {
+    "date": "2026-04-05",
+    "set": 1454,
+    "volume": 164915930,
+    "thb": 32.64,
+    "foreign": 0,
+    "bigcap": {
+      "PTT": {
+        "price": 34.25,
+        "trend": "→",
+        "volume": 96804895
+      },
+      "AOT": {
+        "price": 53,
+        "trend": "→",
+        "volume": 19957626
+      },
+      "KBANK": {
+        "price": 190.5,
+        "trend": "→",
+        "volume": 11186926
+      },
+      "CPALL": {
+        "price": 45.5,
+        "trend": "→",
+        "volume": 33604504
+      },
+      "ADVANC": {
+        "price": 365,
+        "trend": "→",
+        "volume": 3361979
+      }
+    },
+    "score": 0,
+    "signal": "SIDEWAY",
+    "entry": "LIVE",
+    "action": "WAIT",
+    "confidence": 0
   }
 ]

@@ -64,7 +64,7 @@ export default function Dashboard() {
   const [end, setEnd] = useState("");
 
   const fetchDashboard = () => {
-    fetch("http://localhost:3000/dashboard")
+    fetch("https://your-backend.onrender.com/dashboard")
       .then(res => res.json())
       .then(res => {
         setData(res);
@@ -76,7 +76,7 @@ export default function Dashboard() {
   const fetchRange = () => {
     if (!start && !end) return fetchDashboard();
 
-    fetch(`http://localhost:3000/history-range?start=${start}&end=${end}`)
+    fetch(`http://your-backend.onrender.com/history-range?start=${start}&end=${end}`)
       .then(res => res.json())
       .then(res => {
         setHistory(res.data || []);
