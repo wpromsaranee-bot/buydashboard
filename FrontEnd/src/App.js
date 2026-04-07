@@ -76,7 +76,7 @@ export default function Dashboard() {
   const fetchRange = () => {
     if (!start && !end) return fetchDashboard();
 
-    fetch(`http://buydashboard.onrender.com/history-range?start=${start}&end=${end}`)
+    fetch(`https://buydashboard.onrender.com/history-range?start=${start}&end=${end}`)
       .then(res => res.json())
       .then(res => {
         setHistory(res.data || []);
