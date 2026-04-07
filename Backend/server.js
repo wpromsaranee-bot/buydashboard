@@ -9,12 +9,20 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// ================== AXIOS (🔥 FIX YAHOO BLOCK) ==================
+// ================== ROOT (กัน Cannot GET /) ==================
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "🔥 SET Dashboard API Running",
+    endpoints: ["/dashboard", "/daily-run", "/history-range"]
+  });
+});
+
+// ================== AXIOS ==================
 const axiosInstance = axios.create({
   headers: {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-    "Accept": "application/json, text/plain, */*",
-    "Accept-Language": "en-US,en;q=0.9",
+    "User-Agent": "Mozilla/5.0",
+    "Accept": "application/json",
     "Connection": "keep-alive"
   },
   timeout: 10000
@@ -45,16 +53,11 @@ if (fs.existsSync("history.json")) {
 
 async function getSET(prev) {
   try {
-    const url = "https://query1.finance.yahoo.com/v8/finance/chart/^SET.BK";
-    const res = await fetchWithRetry(url);
-
+    const res = await fetchWithRetry("https://query1.finance.yahoo.com/v8/finance/chart/^SET.BK");
     const result = res.data?.chart?.result?.[0];
-    if (!result) throw new Error("Invalid SET data");
+    if (!result) throw new Error("SET invalid");
 
     const price = result.meta?.regularMarketPrice;
-
-    console.log("SET:", price);
-
     return { price: price || prev?.set || 0 };
 
   } catch (err) {
@@ -65,11 +68,9 @@ async function getSET(prev) {
 
 async function getTHB(prev) {
   try {
-    const url = "https://query1.finance.yahoo.com/v8/finance/chart/THB=X";
-    const res = await fetchWithRetry(url);
-
+    const res = await fetchWithRetry("https://query1.finance.yahoo.com/v8/finance/chart/THB=X");
     const result = res.data?.chart?.result?.[0];
-    if (!result) throw new Error("Invalid THB data");
+    if (!result) throw new Error("THB invalid");
 
     return result.meta?.regularMarketPrice || prev?.thb || 0;
 
@@ -90,18 +91,17 @@ async function getBigCap(prevBigCap) {
   };
 
   try {
-    const requests = Object.values(stocks).map(s =>
-      fetchWithRetry(`https://query1.finance.yahoo.com/v8/finance/chart/${s}`)
+    const responses = await Promise.all(
+      Object.values(stocks).map(s =>
+        fetchWithRetry(`https://query1.finance.yahoo.com/v8/finance/chart/${s}`)
+      )
     );
-
-    const responses = await Promise.all(requests);
 
     const result = {};
     let totalVolume = 0;
 
     Object.keys(stocks).forEach((name, i) => {
       const data = responses[i].data?.chart?.result?.[0];
-
       if (!data) return;
 
       const price = data.meta?.regularMarketPrice || 0;
@@ -124,26 +124,26 @@ async function getBigCap(prevBigCap) {
     console.log("BIGCAP ERROR:", err.message);
     return {
       stocks: prevBigCap || {},
-      totalVolume: prevBigCap ? Object.values(prevBigCap).reduce((a,b)=>a+(b.volume||0),0) : 0
+      totalVolume: prevBigCap
+        ? Object.values(prevBigCap).reduce((a, b) => a + (b.volume || 0), 0)
+        : 0
     };
   }
 }
 
-// ================== FOREIGN ==================
+// ================== CALC ==================
 
 function getForeignFlowProxy(set, prevSet, thb, prevThb) {
   let score = 0;
 
-  if (set > prevSet) score += 1;
-  else if (set < prevSet) score -= 1;
+  if (set > prevSet) score++;
+  else if (set < prevSet) score--;
 
-  if (thb < prevThb) score += 1;
-  else if (thb > prevThb) score -= 1;
+  if (thb < prevThb) score++;
+  else if (thb > prevThb) score--;
 
   return score * 1000;
 }
-
-// ================== SCORE ==================
 
 function calculateScore(today, prev) {
   if (!prev) return { score: 0, signal: "SIDEWAY" };
@@ -175,57 +175,11 @@ function calculateScore(today, prev) {
   return { score, signal };
 }
 
-// ================== ACTION ==================
-
-function getTrend(curr, prev) {
-  if (!prev) return "→";
-  if (curr > prev) return "↑";
-  if (curr < prev) return "↓";
-  return "→";
-}
-
-function getAction(today, prev) {
-  if (!prev) return { action: "WAIT", confidence: 0 };
-
-  const setTrend = getTrend(today.set, prev.set);
-  const foreignTrend = getTrend(today.foreign, prev.foreign);
-  const thbTrend = getTrend(today.thb, prev.thb);
-  const volumeTrend = getTrend(today.volume, prev.volume);
-
-  let smartScore = 0;
-
-  if (setTrend === "↑") smartScore += 1;
-  if (setTrend === "↓") smartScore -= 1;
-
-  if (foreignTrend === "↑") smartScore += 2;
-  if (foreignTrend === "↓") smartScore -= 2;
-
-  if (thbTrend === "↓") smartScore += 1;
-  if (thbTrend === "↑") smartScore -= 1;
-
-  if (volumeTrend === "↑") smartScore += 1;
-  if (volumeTrend === "↓") smartScore -= 1;
-
-  let action = "WAIT";
-
-  if (smartScore >= 3 && setTrend === "↑" && foreignTrend === "↑" && volumeTrend === "↑") {
-    action = "BUY NOW";
-  } 
-  else if (setTrend === "↑" && foreignTrend === "↓") {
-    action = "DANGER";
-  } 
-  else if (smartScore >= 2 && (volumeTrend === "↓" || foreignTrend === "↓")) {
-    action = "TAKE PROFIT";
-  }
-
-  const confidence = Math.min(100, Math.abs(smartScore) * 20);
-
-  return { action, confidence };
-}
-
-// ================== 🔥 RUN DAILY ==================
+// ================== RUN DAILY ==================
 
 async function runDaily() {
+  console.log("🔥 RUN DAILY");
+
   const prev = history[history.length - 1];
 
   const setData = await getSET(prev);
@@ -239,8 +193,9 @@ async function runDaily() {
     prev?.thb || thb
   );
 
-  const todayStr = new Date(Date.now() + 7*60*60*1000)
-    .toISOString().slice(0, 10);
+  const todayStr = new Date(Date.now() + 7 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
 
   const today = {
     date: todayStr,
@@ -252,15 +207,12 @@ async function runDaily() {
   };
 
   const analysis = calculateScore(today, prev);
-  const decision = getAction(today, prev);
 
   const finalData = {
     ...today,
     score: analysis.score,
     signal: analysis.signal,
-    entry: "LIVE",
-    action: decision.action,
-    confidence: decision.confidence
+    entry: "LIVE"
   };
 
   history = history.filter(d => d.date !== todayStr);
@@ -277,15 +229,23 @@ async function runDaily() {
 
 // ================== API ==================
 
+app.get("/daily-run", async (req, res) => {
+  try {
+    const data = await runDaily();
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("error");
+  }
+});
+
 app.get("/dashboard", async (req, res) => {
   try {
-    await runDaily(); // 🔥 สำคัญสุด (auto update)
-
+    await runDaily();
     res.json({
       today: history[history.length - 1],
       history
     });
-
   } catch (err) {
     console.error(err);
     res.status(500).send("error");
@@ -293,15 +253,12 @@ app.get("/dashboard", async (req, res) => {
 });
 
 app.get("/history-range", (req, res) => {
-  let { start, end } = req.query;
-
-  const startDate = start ? new Date(start) : null;
-  const endDate = end ? new Date(end) : null;
+  const { start, end } = req.query;
 
   const filtered = history.filter(item => {
     const d = new Date(item.date);
-    if (startDate && d < startDate) return false;
-    if (endDate && d > endDate) return false;
+    if (start && d < new Date(start)) return false;
+    if (end && d > new Date(end)) return false;
     return true;
   });
 
