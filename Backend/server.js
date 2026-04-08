@@ -45,9 +45,35 @@ async function fetchWithRetry(url, retries = 3) {
 // ================== STORAGE ==================
 let history = [];
 
-if (fs.existsSync("history.json")) {
-  history = JSON.parse(fs.readFileSync("history.json"));
+const FILE_PATH = "history.json";
+
+// 🔥 load แบบ safe
+function loadHistory() {
+  try {
+    if (fs.existsSync(FILE_PATH)) {
+      const raw = fs.readFileSync(FILE_PATH);
+      history = JSON.parse(raw);
+
+      // กันไฟล์พัง
+      if (!Array.isArray(history)) history = [];
+    }
+  } catch (err) {
+    console.log("LOAD ERROR:", err.message);
+    history = [];
+  }
 }
+
+// 🔥 save แบบ safe
+function saveHistory() {
+  try {
+    fs.writeFileSync(FILE_PATH, JSON.stringify(history, null, 2));
+  } catch (err) {
+    console.log("SAVE ERROR:", err.message);
+  }
+}
+
+// โหลดตอน start
+loadHistory();
 
 // ================== FETCH ==================
 
@@ -176,7 +202,6 @@ function calculateScore(today, prev) {
 }
 
 // ================== RUN DAILY ==================
-
 async function runDaily() {
   console.log("🔥 RUN DAILY");
 
@@ -215,12 +240,24 @@ async function runDaily() {
     entry: "LIVE"
   };
 
-  history = history.filter(d => d.date !== todayStr);
-  history.push(finalData);
+  // 🔥 FIX สำคัญ: update เฉพาะวันเดียว ไม่ลบทั้งก้อนมั่ว
+  const index = history.findIndex(d => d.date === todayStr);
 
-  if (history.length > 60) history.shift();
+  if (index !== -1) {
+    // update วันเดิม
+    history[index] = finalData;
+  } else {
+    // เพิ่มวันใหม่
+    history.push(finalData);
+  }
 
-  fs.writeFileSync("history.json", JSON.stringify(history, null, 2));
+  // 🔥 sort กันพัง
+  history.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // 🔥 limit
+  if (history.length > 60) history = history.slice(-60);
+
+  saveHistory();
 
   console.log("✅ SAVE:", finalData);
 
