@@ -1,7 +1,7 @@
 const express = require("express");
 const axios = require("axios");
-const fs = require("fs");
 const cors = require("cors");
+const { MongoClient } = require("mongodb");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,14 +9,27 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// ================== ROOT (กัน Cannot GET /) ==================
+// ================== ROOT ==================
 app.get("/", (req, res) => {
   res.json({
     status: "ok",
-    message: "🔥 SET Dashboard API Running",
+    message: "🔥 SET Dashboard API Running (MongoDB)",
     endpoints: ["/dashboard", "/daily-run", "/history-range"]
   });
 });
+
+// ================== MONGODB ==================
+const MONGO_URI = process.env.MONGO_URI;
+
+const client = new MongoClient(MONGO_URI);
+let collection;
+
+async function connectDB() {
+  await client.connect();
+  const db = client.db("set-dashboard");
+  collection = db.collection("history");
+  console.log("✅ MongoDB connected");
+}
 
 // ================== AXIOS ==================
 const axiosInstance = axios.create({
@@ -41,39 +54,6 @@ async function fetchWithRetry(url, retries = 3) {
     throw err;
   }
 }
-
-// ================== STORAGE ==================
-let history = [];
-
-const FILE_PATH = "history.json";
-
-// 🔥 load แบบ safe
-function loadHistory() {
-  try {
-    if (fs.existsSync(FILE_PATH)) {
-      const raw = fs.readFileSync(FILE_PATH);
-      history = JSON.parse(raw);
-
-      // กันไฟล์พัง
-      if (!Array.isArray(history)) history = [];
-    }
-  } catch (err) {
-    console.log("LOAD ERROR:", err.message);
-    history = [];
-  }
-}
-
-// 🔥 save แบบ safe
-function saveHistory() {
-  try {
-    fs.writeFileSync(FILE_PATH, JSON.stringify(history, null, 2));
-  } catch (err) {
-    console.log("SAVE ERROR:", err.message);
-  }
-}
-
-// โหลดตอน start
-loadHistory();
 
 // ================== FETCH ==================
 
@@ -205,7 +185,8 @@ function calculateScore(today, prev) {
 async function runDaily() {
   console.log("🔥 RUN DAILY");
 
-  const prev = history[history.length - 1];
+  const historyArr = await collection.find({}).sort({ date: 1 }).toArray();
+  const prev = historyArr[historyArr.length - 1];
 
   const setData = await getSET(prev);
   const thb = await getTHB(prev);
@@ -218,9 +199,9 @@ async function runDaily() {
     prev?.thb || thb
   );
 
-  const todayStr = new Date(Date.now() + 7 * 60 * 60 * 1000)
-    .toISOString()
-    .slice(0, 10);
+  const todayStr = new Date().toLocaleDateString("en-CA", {
+    timeZone: "Asia/Bangkok"
+  });
 
   const today = {
     date: todayStr,
@@ -240,24 +221,16 @@ async function runDaily() {
     entry: "LIVE"
   };
 
-  // 🔥 FIX สำคัญ: update เฉพาะวันเดียว ไม่ลบทั้งก้อนมั่ว
-  const index = history.findIndex(d => d.date === todayStr);
+  const existing = await collection.findOne({ date: todayStr });
 
-  if (index !== -1) {
-    // update วันเดิม
-    history[index] = finalData;
+  if (existing) {
+    await collection.updateOne(
+      { date: todayStr },
+      { $set: finalData }
+    );
   } else {
-    // เพิ่มวันใหม่
-    history.push(finalData);
+    await collection.insertOne(finalData);
   }
-
-  // 🔥 sort กันพัง
-  history.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-  // 🔥 limit
-  if (history.length > 60) history = history.slice(-60);
-
-  saveHistory();
 
   console.log("✅ SAVE:", finalData);
 
@@ -279,34 +252,49 @@ app.get("/daily-run", async (req, res) => {
 app.get("/dashboard", async (req, res) => {
   try {
     await runDaily();
+
+    const history = await collection
+      .find({})
+      .sort({ date: 1 })
+      .toArray();
+
     res.json({
       today: history[history.length - 1],
       history
     });
+
   } catch (err) {
     console.error(err);
     res.status(500).send("error");
   }
 });
 
-app.get("/history-range", (req, res) => {
+app.get("/history-range", async (req, res) => {
   const { start, end } = req.query;
 
-  const filtered = history.filter(item => {
-    const d = new Date(item.date);
-    if (start && d < new Date(start)) return false;
-    if (end && d > new Date(end)) return false;
-    return true;
-  });
+  const query = {};
+
+  if (start || end) {
+    query.date = {};
+    if (start) query.date.$gte = start;
+    if (end) query.date.$lte = end;
+  }
+
+  const data = await collection
+    .find(query)
+    .sort({ date: 1 })
+    .toArray();
 
   res.json({
-    total: filtered.length,
-    data: filtered
+    total: data.length,
+    data
   });
 });
 
 // ================== START ==================
 
-app.listen(PORT, () => {
-  console.log(`🔥 Server running on port ${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`🔥 Server running on port ${PORT}`);
+  });
 });
