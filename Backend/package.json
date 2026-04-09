@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node Backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +16,7 @@
     "cheerio": "^1.2.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "mongodb": "^6.5.0",
     "node-cron": "^4.2.1",
     "puppeteer": "^24.40.0"
   }
