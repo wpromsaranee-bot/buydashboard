@@ -13,7 +13,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({
     status: "ok",
-    message: "🔥 SET Dashboard API Running (MongoDB)",
+    message: "🔥 SET Dashboard API Running (MongoDB READY)",
     endpoints: ["/dashboard", "/daily-run", "/history-range"]
   });
 });
@@ -21,14 +21,28 @@ app.get("/", (req, res) => {
 // ================== MONGODB ==================
 const MONGO_URI = process.env.MONGO_URI;
 
+if (!MONGO_URI) {
+  console.error("❌ MONGO_URI is missing!");
+  process.exit(1);
+}
+
 const client = new MongoClient(MONGO_URI);
 let collection;
 
 async function connectDB() {
-  await client.connect();
-  const db = client.db("set-dashboard");
-  collection = db.collection("history");
-  console.log("✅ MongoDB connected");
+  try {
+    await client.connect();
+    const db = client.db("set-dashboard");
+    collection = db.collection("history");
+
+    // 🔥 กันข้อมูลซ้ำ (unique date)
+    await collection.createIndex({ date: 1 }, { unique: true });
+
+    console.log("✅ MongoDB connected");
+  } catch (err) {
+    console.error("❌ MongoDB connect error:", err.message);
+    process.exit(1);
+  }
 }
 
 // ================== AXIOS ==================
@@ -56,16 +70,12 @@ async function fetchWithRetry(url, retries = 3) {
 }
 
 // ================== FETCH ==================
-
 async function getSET(prev) {
   try {
     const res = await fetchWithRetry("https://query1.finance.yahoo.com/v8/finance/chart/^SET.BK");
     const result = res.data?.chart?.result?.[0];
-    if (!result) throw new Error("SET invalid");
-
-    const price = result.meta?.regularMarketPrice;
+    const price = result?.meta?.regularMarketPrice;
     return { price: price || prev?.set || 0 };
-
   } catch (err) {
     console.log("SET ERROR:", err.message);
     return { price: prev?.set || 0 };
@@ -76,17 +86,13 @@ async function getTHB(prev) {
   try {
     const res = await fetchWithRetry("https://query1.finance.yahoo.com/v8/finance/chart/THB=X");
     const result = res.data?.chart?.result?.[0];
-    if (!result) throw new Error("THB invalid");
-
-    return result.meta?.regularMarketPrice || prev?.thb || 0;
-
+    return result?.meta?.regularMarketPrice || prev?.thb || 0;
   } catch {
     return prev?.thb || 0;
   }
 }
 
 // ================== BIGCAP ==================
-
 async function getBigCap(prevBigCap) {
   const stocks = {
     PTT: "PTT.BK",
@@ -108,10 +114,8 @@ async function getBigCap(prevBigCap) {
 
     Object.keys(stocks).forEach((name, i) => {
       const data = responses[i].data?.chart?.result?.[0];
-      if (!data) return;
-
-      const price = data.meta?.regularMarketPrice || 0;
-      const volume = data.meta?.regularMarketVolume || 0;
+      const price = data?.meta?.regularMarketPrice || 0;
+      const volume = data?.meta?.regularMarketVolume || 0;
 
       totalVolume += volume;
 
@@ -138,7 +142,6 @@ async function getBigCap(prevBigCap) {
 }
 
 // ================== CALC ==================
-
 function getForeignFlowProxy(set, prevSet, thb, prevThb) {
   let score = 0;
 
@@ -221,16 +224,19 @@ async function runDaily() {
     entry: "LIVE"
   };
 
-  const existing = await collection.findOne({ date: todayStr });
-
-  if (existing) {
+  try {
     await collection.updateOne(
       { date: todayStr },
-      { $set: finalData }
+      { $set: finalData },
+      { upsert: true } // 🔥 สำคัญมาก
     );
-  } else {
-    await collection.insertOne(finalData);
+  } catch (err) {
+    console.error("SAVE ERROR:", err.message);
   }
+
+  // 🔥 debug จำนวนข้อมูล
+  const count = await collection.countDocuments();
+  console.log("📦 Mongo Count:", count);
 
   console.log("✅ SAVE:", finalData);
 
@@ -238,7 +244,6 @@ async function runDaily() {
 }
 
 // ================== API ==================
-
 app.get("/daily-run", async (req, res) => {
   try {
     const data = await runDaily();
@@ -292,7 +297,6 @@ app.get("/history-range", async (req, res) => {
 });
 
 // ================== START ==================
-
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🔥 Server running on port ${PORT}`);
